@@ -1,0 +1,27 @@
+.App{
+  nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: calc(100%-96px);
+    padding: 0 48px;
+    justify-content: space-between;
+    .main_nav{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+    }
+    .link{
+      font-size: 24px;
+      margin: 12px;
+      text-decoration: none;
+      color: black;
+      padding: 4px 8px;
+      &:hover{ 
+        background-color: aliceblue;
+        border-radius: 16px;
+      }
+    }
+  }
+}
