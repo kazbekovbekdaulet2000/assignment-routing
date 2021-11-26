@@ -1,38 +1,50 @@
 import { useState } from "react"
 import { useNavigate } from "react-router";
-
-
-import "./login.scss"
-export default function Login({ authed }) {
+import './login.scss';
+import {users} from './logins'
+export default function Login({ authed, setAuthed }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
 
-
   function onSubmit(e){
-    
+    e.preventDefault();
+    const user = users.find((val)=>{
+      return val.username === username && val.password === password
+    })
+    if(user){
+      setAuthed(true);
+      navigate('/', { replace: true })
+    } else {
+      setErrorMsg('Username or password is not correct');
+    }
   }
 
   return (
-    <div className="wrapper">
+    <section className="wrapper">
       <h1>
         Login page
       </h1>
       <form onSubmit={onSubmit}>
-        <div class="form-group">
-          <label for="user">User</label>
-          <input type="text" class="form-control" id="user" value={username} onChange={(event) => setUsername(event.target.value)}/>
-          <small class="form-text text-muted">The correct username is: Pablo</small>
+        <div className="form-group">
+          <label htmlFor="user">User</label>
+          <input type="text" id="user" value={username} onChange={(event) => setUsername(event.target.value)}/>
+          <small>The correct username is: Pablo</small>
         </div>
-        <div class="form-group">
-          <label for="passsword">Password</label>
-          <input type="password" class="form-control" id="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
-          <small class="form-text text-muted">The correct password is: qwerty</small>
+        <div className="form-group">
+          <label htmlFor="passsword">Password</label>
+          <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+          <small>The correct password is: qwerty</small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit">Submit</button>
       </form>
-    </div>
+      {errorMsg && (
+        <div className="alert" role="alert">
+          {errorMsg}
+         </div>
+      )}
+    </section>
     
   )
 }

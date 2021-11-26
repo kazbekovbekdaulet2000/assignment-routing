@@ -13,11 +13,26 @@
       width: 100%;
     }
     .link{
+      cursor: pointer;
       font-size: 24px;
       margin: 12px;
       text-decoration: none;
       color: black;
       padding: 4px 8px;
+
+      &-logout{
+        cursor: pointer;
+        font-size: 24px;
+        margin: 12px;
+        text-decoration: none;
+        color: black;
+        padding: 4px 8px;
+        &:hover{ 
+          background-color: rgb(255, 98, 98);
+          color: white;
+          border-radius: 16px;
+        }
+      }
       &:hover{ 
         background-color: aliceblue;
         border-radius: 16px;

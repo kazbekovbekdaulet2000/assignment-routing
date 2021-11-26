@@ -1,11 +1,18 @@
 import './app.scss';
 import { useState } from "react";
-import { Link, Routes, Route, Navigate, useNavigate } from "react-router-dom"
+import { Link, Routes, Route, useNavigate } from "react-router-dom"
 import Main from "./features/Main/Main"
 import Login from "./features/Login/Login"
+import Profile from './features/Profile/Profile';
+import Friends from './features/Friends/friends';
+
 function App() {
-  const [authed, setAuthed] = useState(false);
+  const [authed, setAuthed] = useState(null);
   const navigate = useNavigate();
+
+  const logout=()=>{
+    setAuthed(null)
+  } 
 
   return (
     <div className="App">
@@ -21,7 +28,7 @@ function App() {
             Friends
           </Link>
         </div>
-        {authed ? <span className="link">Logout</span> : <Link className="link" to='/login'>Login</Link>}
+        {authed !== null ? <span className="link-logout" onClick = {logout}>Logout</span> : <Link className="link" to='/login'>Login</Link>}
       </nav>
 
       <Routes>
@@ -29,17 +36,17 @@ function App() {
           <Main authed={authed}/>
         } />
         <Route path="/profile" element={
-          <p> profile 2</p>
+          <Profile user = {authed}/>
         } />
         <Route path="/friends" element={
-          <p> friends 3</p>
+          <Friends user = {authed}/>
         }>
-        <Route path=":friend" element={
-          <p> :friend 4</p>
-        } />
+          <Route path=":friend" element={
+            <p> friend </p>
+          } />
         </Route>
         <Route path="/login" element={
-          <Login/>
+          <Login setAuthed = {setAuthed} />
         } />
       </Routes>
     </div>
