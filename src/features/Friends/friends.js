@@ -8,9 +8,9 @@ export const friendList = [
   {id: 4, name: "friend4"},
 ]
 
-export default function Friends({user}) {
+export default function Friends({user, setFriend}) {
   const listItems = friendList.map((val) =>
-    <Link to={`/friends/${val.id}`}>{val.name}</Link>
+    <li key={val.id}><Link onClick={()=>setFriend(val.id)} to={`/friends/${val.id}`}>{val.name}</Link></li>
   );
   return (
     <div className="profile">

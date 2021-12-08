@@ -2,7 +2,7 @@ import './main.scss';
 
 export default function Main({ authed }) {
   return (
-    <div className="wrapper">
+    <div className="home">
       <h1>
         Welcome to the homepage!
       </h1>

@@ -22,7 +22,7 @@ export default function Login({ authed, setAuthed }) {
   }
 
   return (
-    <section className="wrapper">
+    <section className="login-wrapper">
       <h1>
         Login page
       </h1>
@@ -30,12 +30,12 @@ export default function Login({ authed, setAuthed }) {
         <div className="form-group">
           <label htmlFor="user">User</label>
           <input type="text" id="user" value={username} onChange={(event) => setUsername(event.target.value)}/>
-          <small>The correct username is: Pablo</small>
+          <small>The correct username is: asd1</small>
         </div>
         <div className="form-group">
           <label htmlFor="passsword">Password</label>
           <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
-          <small>The correct password is: qwerty</small>
+          <small>The correct password is: asd</small>
         </div>
         <button type="submit">Submit</button>
       </form>

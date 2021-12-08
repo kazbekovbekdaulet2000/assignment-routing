@@ -8,7 +8,7 @@ import Friends from './features/Friends/friends';
 
 function App() {
   const [authed, setAuthed] = useState(null);
-  const navigate = useNavigate();
+  const [friend, setFriend] = useState(null);
 
   const logout=()=>{
     setAuthed(null)
@@ -39,12 +39,12 @@ function App() {
           <Profile user = {authed}/>
         } />
         <Route path="/friends" element={
-          <Friends user = {authed}/>
+          <Friends user = {authed} setFriend={setFriend}/>
         }>
-          <Route path=":friend" element={
-            <p> friend </p>
-          } />
         </Route>
+        <Route path="/friends/:id" element={
+          <p> friend {friend}</p>
+        } />
         <Route path="/login" element={
           <Login setAuthed = {setAuthed} />
         } />
